@@ -1,0 +1,9 @@
+-- L = {(0 + 1)* | a sequência termina em '11'}
+
+*vertices 3
+*initial 1
+*final 3
+*transitions
+1 > 1 | 0 1
+1 > 2 | 1
+2 > 3 | 1

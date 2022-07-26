@@ -1,0 +1,5 @@
+-- Gramática do miniteste 11
+
+S -> S or A | A
+A -> A and B | B
+B -> not B | ( S ) | true | false

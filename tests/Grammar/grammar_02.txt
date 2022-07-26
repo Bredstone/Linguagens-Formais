@@ -1,0 +1,8 @@
+-- Gramática do miniteste 10
+
+P -> K L | b K L e
+K -> c K | T V
+T -> t T | t
+V -> v V | v
+L -> J 
+J -> a | J c | e

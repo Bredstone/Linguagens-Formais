@@ -1,0 +1,6 @@
+P -> K L | b K L e
+K -> c K | T V
+T -> t T | &
+V -> v V | v
+L -> J
+J -> a | J c | e

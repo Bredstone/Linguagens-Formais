@@ -1,0 +1,18 @@
+-- L = {(a + b)*c^n | n ≥ 0 e #a + n seja múltiplo de 3}
+
+*vertices 6
+*initial 1
+*final 1 6
+*transitions
+1 > 1 | b
+1 > 2 | a
+1 > 4 | c
+2 > 2 | b
+2 > 3 | a
+2 > 5 | c
+3 > 3 | b
+3 > 1 | a
+3 > 6 | c
+4 > 5 | c
+5 > 6 | c
+6 > 4 | c

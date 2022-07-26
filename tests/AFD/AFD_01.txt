@@ -1,0 +1,10 @@
+-- L = {(0 + 1)* | #1 é ímpar}
+
+*vertices 2
+*initial 1
+*final 2
+*transitions
+1 > 1 | 0
+1 > 2 | 1
+2 > 1 | 1
+2 > 2 | 0

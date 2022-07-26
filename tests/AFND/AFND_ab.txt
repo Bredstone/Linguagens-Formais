@@ -1,0 +1,9 @@
+-- L = {(a + b)* | a sequência termina em 'ab'}
+
+*vertices 3
+*initial 1
+*final 3
+*transitions
+1 > 1 | a b
+1 > 2 | a
+2 > 3 | b
