@@ -39,7 +39,7 @@ class Grammar:
 
     self.productions = productions
     self.nterminals = [y for x in productions.keys() for y in x if y[0].isupper()]
-    self.terminals = [y for x in chain.from_iterable(productions.values()) for y in x if not y[0].isupper()]
+    self.terminals = [y for x in chain.from_iterable(productions.values()) for y in x if not y in self.nterminals]
     self.terminals = sorted(set(self.terminals))
     self.firsts = dict()
     self.follows = dict()
@@ -165,15 +165,18 @@ class Grammar:
     table = dict.fromkeys(product(grammar.nterminals, [x for x in grammar.terminals if x != '&'] + ['$']), '')
     for ((nt,), productions) in grammar.productions.items():
       for production in productions:
-        firsts = grammar.firsts.get(production[0], [production[0]])
+        for p in production:
+          firsts = grammar.firsts.get(p, [p])
 
-        if '&' in firsts:
-          firsts.remove('&')
-          for follow in grammar.follows[nt]:
-            table[(nt, follow)] = production
+          if '&' in firsts:
+            for follow in grammar.follows[nt]:
+              table[(nt, follow)] = production
 
-        for first in firsts:
-          table[(nt, first)] = production
+          for first in [x for x in firsts if x != '&']:
+            table[(nt, first)] = production
+          
+          if '&' not in firsts:
+            break
 
     grammar.llTable = table
     return grammar
